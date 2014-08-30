@@ -12,6 +12,9 @@
 		1D7E59FF19B1F18600D283C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7E59FD19B1F18600D283C5 /* Main.storyboard */; };
 		1D7E5A0119B1F18600D283C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7E5A0019B1F18600D283C5 /* Images.xcassets */; };
 		1D7E5A0D19B1F18700D283C5 /* TinderStyleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E5A0C19B1F18700D283C5 /* TinderStyleAppTests.swift */; };
+		1D7E5A1719B1F19A00D283C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1619B1F19A00D283C5 /* Foundation.framework */; };
+		1D7E5A1919B1F1A400D283C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */; };
+		1D7E5A1B19B1F1AB00D283C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		1D7E5A0619B1F18700D283C5 /* TinderStyleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinderStyleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7E5A0B19B1F18700D283C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D7E5A0C19B1F18700D283C5 /* TinderStyleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderStyleAppTests.swift; sourceTree = "<group>"; };
+		1D7E5A1619B1F19A00D283C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D7E5A1B19B1F1AB00D283C5 /* UIKit.framework in Frameworks */,
+				1D7E5A1919B1F1A400D283C5 /* CoreGraphics.framework in Frameworks */,
+				1D7E5A1719B1F19A00D283C5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +66,7 @@
 		1D7E59EB19B1F18600D283C5 = {
 			isa = PBXGroup;
 			children = (
+				1D7E5A1C19B1F1D700D283C5 /* Frameworks */,
 				1D7E59F619B1F18600D283C5 /* TinderStyleApp */,
 				1D7E5A0919B1F18700D283C5 /* TinderStyleAppTests */,
 				1D7E59F519B1F18600D283C5 /* Products */,
@@ -107,6 +117,16 @@
 				1D7E5A0B19B1F18700D283C5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D7E5A1C19B1F1D700D283C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */,
+				1D7E5A1619B1F19A00D283C5 /* Foundation.framework */,
+				1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
