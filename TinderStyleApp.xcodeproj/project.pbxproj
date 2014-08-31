@@ -15,6 +15,9 @@
 		1D7E5A1719B1F19A00D283C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1619B1F19A00D283C5 /* Foundation.framework */; };
 		1D7E5A1919B1F1A400D283C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */; };
 		1D7E5A1B19B1F1AB00D283C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */; };
+		1D7E5A1F19B1F37F00D283C5 /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7E5A1E19B1F37F00D283C5 /* DraggableViewBackground.m */; };
+		1DE2152D19B1F56C007ABA46 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2152C19B1F56C007ABA46 /* DraggableView.m */; };
+		1DE2153019B1F5D2007ABA46 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2152F19B1F5D2007ABA46 /* OverlayView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,13 @@
 		1D7E5A1619B1F19A00D283C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1D7E5A1D19B1F37F00D283C5 /* TinderStyleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinderStyleApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		1D7E5A1E19B1F37F00D283C5 /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableViewBackground.m; path = ../DraggableViewBackground.m; sourceTree = "<group>"; };
+		1DE2152A19B1F4AC007ABA46 /* DraggableViewBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableViewBackground.h; path = ../DraggableViewBackground.h; sourceTree = "<group>"; };
+		1DE2152B19B1F537007ABA46 /* DraggableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DraggableView.h; path = ../DraggableView.h; sourceTree = "<group>"; };
+		1DE2152C19B1F56C007ABA46 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableView.m; path = ../DraggableView.m; sourceTree = "<group>"; };
+		1DE2152E19B1F5B9007ABA46 /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OverlayView.h; path = ../OverlayView.h; sourceTree = "<group>"; };
+		1DE2152F19B1F5D2007ABA46 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayView.m; path = ../OverlayView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,13 @@
 		1D7E59F619B1F18600D283C5 /* TinderStyleApp */ = {
 			isa = PBXGroup;
 			children = (
+				1DE2152B19B1F537007ABA46 /* DraggableView.h */,
+				1DE2152C19B1F56C007ABA46 /* DraggableView.m */,
+				1DE2152A19B1F4AC007ABA46 /* DraggableViewBackground.h */,
+				1D7E5A1E19B1F37F00D283C5 /* DraggableViewBackground.m */,
+				1DE2152E19B1F5B9007ABA46 /* OverlayView.h */,
+				1DE2152F19B1F5D2007ABA46 /* OverlayView.m */,
+				1D7E5A1D19B1F37F00D283C5 /* TinderStyleApp-Bridging-Header.h */,
 				1D7E59F919B1F18600D283C5 /* AppDelegate.swift */,
 				1D7E59FB19B1F18600D283C5 /* ViewController.swift */,
 				1D7E59FD19B1F18600D283C5 /* Main.storyboard */,
@@ -228,7 +245,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D7E5A1F19B1F37F00D283C5 /* DraggableViewBackground.m in Sources */,
+				1DE2153019B1F5D2007ABA46 /* OverlayView.m in Sources */,
 				1D7E59FC19B1F18600D283C5 /* ViewController.swift in Sources */,
+				1DE2152D19B1F56C007ABA46 /* DraggableView.m in Sources */,
 				1D7E59FA19B1F18600D283C5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,9 +365,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TinderStyleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinderStyleApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -356,9 +379,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TinderStyleApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinderStyleApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -415,6 +440,7 @@
 				1D7E5A1219B1F18700D283C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D7E5A1319B1F18700D283C5 /* Build configuration list for PBXNativeTarget "TinderStyleAppTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +449,7 @@
 				1D7E5A1519B1F18700D283C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

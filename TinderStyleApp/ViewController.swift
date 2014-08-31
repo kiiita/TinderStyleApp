@@ -9,10 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var draggableBackground: DraggableViewBackground = DraggableViewBackground()
                             
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.draggableBackground.frame = self.view.frame
+        self.view.addSubview(draggableBackground)
     }
 
     override func didReceiveMemoryWarning() {
