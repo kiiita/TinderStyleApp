@@ -35,7 +35,7 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     }
     
-    func setupView() -> (Void) {
+    func setupView() {
         self.backgroundColor = UIColor(red: 0.92, green: 0.93, blue: 0.95, alpha: 1.0);
         menuButton = UIButton(frame:CGRectMake(17,34,22,15));
         messageButton = UIButton(frame:CGRectMake(284,34,18,18));
@@ -83,7 +83,38 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
                 cardsLoadedIndex++
             }
         }
+    }
     
+    func cardSwipeLeft(card: UIView) {
+        loadedCards.removeObjectAtIndex(0)
+        if ( cardsLoadedIndex < allCards.count ) {
+            loadedCards.addObject(allCards.objectAtIndex(cardsLoadedIndex))
+            cardsLoadedIndex++
+            self.insertSubview(loadedCards.objectAtIndex(MAX_BUFFER_SIZE-1) as UIView, belowSubview: loadedCards.objectAtIndex(MAX_BUFFER_SIZE-2) as UIView)
+        }
+    }
+    
+    func cardSwipeRight(card: UIView) {
+        loadedCards.removeObjectAtIndex(0)
+        if ( cardsLoadedIndex < allCards.count ) {
+            loadedCards.addObject(allCards.objectAtIndex(cardsLoadedIndex))
+            cardsLoadedIndex++
+            self.insertSubview(loadedCards.objectAtIndex(MAX_BUFFER_SIZE-1) as UIView, belowSubview: loadedCards.objectAtIndex(MAX_BUFFER_SIZE-2) as UIView)
+        }
+    }
+    
+    func swipeRight() {
+        var dragView: DraggableView = loadedCards.firstObject as DraggableView
+        dragView.overlayView.mode = GGOverlayViewMode.Right
+        UIView.animateWithDuration(0.2, animations: dragView.overlayView.alpha = 1)
+        dragView.rightClickAction
+    }
+    
+    func swipeLeft() {
+        var dragView: DraggableView = loadedCards.firstObject as DraggableView
+        dragView.overlayView.mode = GGOverlayViewMode.Left
+        UIView.animateWithDuration(0.2, animations: dragView.overlayView.alpha = 1)
+        dragView.leftClickAction
     }
 }
 
