@@ -14,14 +14,14 @@ let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = ca
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 
-protocol DraggableViewDelegate {
-    func cardSwipeLeft(card: UIView)
-    func cardSwipeRight(card: UIView)
+@objc protocol DraggableViewDelegate {
+    func cardSwipedLeft(card: UIView)
+    func cardSwipedRight(card: UIView)
 }
 
 class DraggableView: UIView {
     
-    weak var delegate: AnyObject?
+    var delegate: DraggableViewDelegate?
     var information: UILabel = UILabel()
     var overlayView: OverlayView?
     var panGestureRecognizer: UIPanGestureRecognizer?
