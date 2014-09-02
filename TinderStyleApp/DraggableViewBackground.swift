@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DraggableViewBackground: UIView, DraggableViewDelegate{
+class DraggableViewBackground: UIView{
     var cardsLoadedIndex:NSInteger = NSInteger()
     var loadedCards: NSMutableArray = NSMutableArray()
     
@@ -23,6 +23,9 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     var exampleCardLabels: NSArray = NSArray()
     var allCards: NSMutableArray = NSMutableArray()
     
+    required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         super.layoutSubviews()
@@ -105,16 +108,20 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     func swipeRight() {
         var dragView: DraggableView = loadedCards.firstObject as DraggableView
-        dragView.overlayView.mode = GGOverlayViewMode.Right
-        UIView.animateWithDuration(0.2, animations: dragView.overlayView.alpha = 1)
-        dragView.rightClickAction
+        dragView.overlayView!.mode = GGOverlayViewMode.Right
+        UIView.animateWithDuration(0.2, animations: {
+            dragView.overlayView!.alpha = 1
+        })
+        dragView.rightClickAction()
     }
     
     func swipeLeft() {
         var dragView: DraggableView = loadedCards.firstObject as DraggableView
-        dragView.overlayView.mode = GGOverlayViewMode.Left
-        UIView.animateWithDuration(0.2, animations: dragView.overlayView.alpha = 1)
-        dragView.leftClickAction
+        dragView.overlayView!.mode = GGOverlayViewMode.Left
+        UIView.animateWithDuration(0.2, animations: {
+            dragView.overlayView!.alpha = 1
+        })
+        dragView.leftClickAction()
     }
 }
 
