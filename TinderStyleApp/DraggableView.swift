@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 let ACTION_MARGIN  = 120 //%%% distance from center where the action applies. Higher = swipe further in order for the action to be called
 let SCALE_STRENGTH  = 4 //%%% how quickly the card shrinks. Higher = slower shrinking
 let SCALE_MAX = 93 //%%% upper bar for how much the card shrinks. Higher = shrinks less
@@ -14,14 +15,14 @@ let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = ca
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 
-@objc protocol DraggableViewDelegate {
+protocol DraggableViewDelegate : class {
     func cardSwipedLeft(card: UIView)
     func cardSwipedRight(card: UIView)
 }
 
 class DraggableView: UIView {
     
-    var delegate: DraggableViewDelegate?
+    weak var delegate: DraggableViewDelegate?
     var information: UILabel = UILabel()
     var overlayView: OverlayView?
     var panGestureRecognizer: UIPanGestureRecognizer?

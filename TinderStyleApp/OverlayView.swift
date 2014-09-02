@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum CGOverlayViewMode: Int {
     case Left

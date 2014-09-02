@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
-class DraggableViewBackground: UIView{
+class DraggableViewBackground: UIView, DraggableViewDelegate{
+    
     var cardsLoadedIndex:NSInteger = NSInteger()
     var loadedCards: NSMutableArray = NSMutableArray()
     
@@ -31,7 +33,7 @@ class DraggableViewBackground: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        super.layoutSubviews()
+        super.layoutSubviews()
         self.setupView()
         
         exampleCardLabels = ["hoge1", "hoge2", "hoge3", "hoge4", "hoge5"]
@@ -63,9 +65,10 @@ class DraggableViewBackground: UIView{
     }
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
-        var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-//        draggableView.information = exampleCardLabels.objectAtIndex(index) as UILabel
-//        draggableView.delegate = self
+//        var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
+        var draggableView: DraggableView = DraggableView(frame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT))
+        draggableView.information.text = exampleCardLabels.objectAtIndex(index) as String
+        draggableView.delegate = self
         return draggableView
     
     }
@@ -91,7 +94,7 @@ class DraggableViewBackground: UIView{
         }
     }
     
-    func cardSwipeLeft(card: UIView) {
+    func cardSwipedLeft(card: UIView) {
         loadedCards.removeObjectAtIndex(0)
         if ( cardsLoadedIndex < allCards.count ) {
             loadedCards.addObject(allCards.objectAtIndex(cardsLoadedIndex))
@@ -100,7 +103,7 @@ class DraggableViewBackground: UIView{
         }
     }
     
-    func cardSwipeRight(card: UIView) {
+    func cardSwipedRight(card: UIView) {
         loadedCards.removeObjectAtIndex(0)
         if ( cardsLoadedIndex < allCards.count ) {
             loadedCards.addObject(allCards.objectAtIndex(cardsLoadedIndex))
