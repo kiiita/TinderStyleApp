@@ -14,9 +14,9 @@ let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = ca
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 
-class DraggableViewDelegate :NSObject{
-    func cardSwipeLeft(card: UIView) {}
-    func cardSwipeRight(card: UIView) {}
+protocol DraggableViewDelegate {
+    func cardSwipeLeft(card: UIView)
+    func cardSwipeRight(card: UIView)
 }
 
 class DraggableView: UIView {
@@ -30,8 +30,8 @@ class DraggableView: UIView {
     var xFromCenter: CGFloat = CGFloat()
     var yFromCenter: CGFloat = CGFloat()
     
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
+    required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect) {
@@ -135,7 +135,7 @@ class DraggableView: UIView {
             }, completion: { (complete: Bool) in
                 self.removeFromSuperview()
         })
-        delegate?.cardSwipeLeft(self)
+        delegate?.cardSwipedLeft(self)
         NSLog("NO")
     }
     

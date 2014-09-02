@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DraggableViewBackground: UIView{
+class DraggableViewBackground: UIView, DraggableViewDelegate{
     var cardsLoadedIndex:NSInteger = NSInteger()
     var loadedCards: NSMutableArray = NSMutableArray()
     
@@ -23,9 +23,11 @@ class DraggableViewBackground: UIView{
     var exampleCardLabels: NSArray = NSArray()
     var allCards: NSMutableArray = NSMutableArray()
     
+    
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         super.layoutSubviews()
@@ -40,9 +42,9 @@ class DraggableViewBackground: UIView{
     
     func setupView() {
         self.backgroundColor = UIColor(red: 0.92, green: 0.93, blue: 0.95, alpha: 1.0);
-        menuButton = UIButton(frame:CGRectMake(17,34,22,15));
-        messageButton = UIButton(frame:CGRectMake(284,34,18,18));
-        xButton = UIButton(frame:CGRectMake(60,485,59,59));
+        menuButton = UIButton(frame:CGRectMake(17,34,22,15))
+        messageButton = UIButton(frame:CGRectMake(284,34,18,18))
+        xButton = UIButton(frame:CGRectMake(60,485,59,59))
         //checkButton = UIButton(frame:CGRectMake(200,485,59,59));
         let menuButtonImage = UIImage(named: "menuButton")
         let messageButtonImage = UIImage(named: "messageButton")
@@ -59,9 +61,9 @@ class DraggableViewBackground: UIView{
 
     }
     
-    func createDraggableViewWithDataAtIndex(index: NSInteger) -> DraggableView {
+    func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
         var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-        draggableView.information = exampleCardLabels.objectAtIndex(index) as UILabel
+//        draggableView.information = exampleCardLabels.objectAtIndex(index) as UILabel
         draggableView.delegate = self
         return draggableView
     

@@ -17,9 +17,10 @@ class OverlayView: UIView{
     var mode: GGOverlayViewMode?
     var imageView: UIImageView?
     
-    required init(coder: NSCoder) {
-        fatalError("NSCoding not supported")
+    required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
     }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
