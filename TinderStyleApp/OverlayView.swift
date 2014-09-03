@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CGOverlayViewMode: Int {
+enum GGOverlayViewMode: Int {
     case Left
     case Right
 }
@@ -33,8 +33,10 @@ class OverlayView: UIView{
         
         if mode == GGOverlayViewMode.Left {
             imageView.image = UIImage(named: "noButton")
+            println("hogeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
         } else {
             imageView.image = UIImage(named: "yesButton")
+            println("hugaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         }
         
     }
@@ -42,5 +44,7 @@ class OverlayView: UIView{
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = CGRectMake(50, 50, 100, 100)
+            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        
     }
 }

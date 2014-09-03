@@ -1,27 +1,27 @@
+////
+////  OverlayView.h
+////  TinderStyleApp
+////
+////  Created by kiiita on 2014/08/30.
+////  Copyright (c) 2014年 kiiita. All rights reserved.
+////
 //
-//  OverlayView.h
-//  TinderStyleApp
+//#ifndef TinderStyleApp_OverlayView_h
+//#define TinderStyleApp_OverlayView_h
 //
-//  Created by kiiita on 2014/08/30.
-//  Copyright (c) 2014年 kiiita. All rights reserved.
+//#import <UIKit/UIKit.h>
 //
-
-#ifndef TinderStyleApp_OverlayView_h
-#define TinderStyleApp_OverlayView_h
-
-#import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSUInteger , GGOverlayViewMode) {
-    GGOverlayViewModeLeft,
-    GGOverlayViewModeRight
-};
-
-@interface OverlayView : UIView
-
-@property (nonatomic) GGOverlayViewMode mode;
-@property (nonatomic, strong) UIImageView *imageView;
-
-@end
-
-
-#endif
+//typedef NS_ENUM(NSUInteger , GGOverlayViewMode) {
+//    GGOverlayViewModeLeft,
+//    GGOverlayViewModeRight
+//};
+//
+//@interface OverlayView : UIView
+//
+//@property (nonatomic) GGOverlayViewMode mode;
+//@property (nonatomic, strong) UIImageView *imageView;
+//
+//@end
+//
+//
+//#endif

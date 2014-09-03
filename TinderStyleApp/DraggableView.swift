@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 let ACTION_MARGIN  = 120 //%%% distance from center where the action applies. Higher = swipe further in order for the action to be called
 let SCALE_STRENGTH  = 4 //%%% how quickly the card shrinks. Higher = slower shrinking
-let SCALE_MAX = 93 //%%% upper bar for how much the card shrinks. Higher = shrinks less
+let SCALE_MAX = 0.93 //%%% upper bar for how much the card shrinks. Higher = shrinks less
 let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = card can keep rotating longer
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
@@ -38,14 +38,15 @@ class DraggableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
+        println("------------------------ set up! ----------------------------")
         information = UILabel(frame:CGRectMake(0, 50, self.frame.size.width, 100))
         information.text = "no info given"
         information.textAlignment = NSTextAlignment.Center
         information.textColor = UIColor.blackColor()
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.blackColor()
         
-        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("beingDragged"))
+        panGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("beingDragged:"))
         self.addGestureRecognizer(panGestureRecognizer!)
         self.addSubview(information)
         
@@ -150,6 +151,7 @@ class DraggableView: UIView {
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
+        println("HUGA")
     }
     func leftClickAction() {
         var finishPoint: CGPoint = CGPointMake(-600, self.center.y)

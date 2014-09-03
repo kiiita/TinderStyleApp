@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         var draggableBackground = DraggableViewBackground(frame: self.view.frame)
-        println(draggableBackground.allCards)
+        println("draggableBackground is \(draggableBackground)")
+        println("all cards = \(draggableBackground.allCards)")
+        println("size of cards = \(draggableBackground.allCards.count)")
         self.view.addSubview(draggableBackground)
     }
 

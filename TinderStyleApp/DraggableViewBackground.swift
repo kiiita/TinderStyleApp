@@ -11,7 +11,7 @@ import UIKit
 
 class DraggableViewBackground: UIView, DraggableViewDelegate{
     
-    var cardsLoadedIndex:NSInteger = NSInteger()
+    var cardsLoadedIndex:Int = Int()
     var loadedCards: NSMutableArray = NSMutableArray()
     
     var menuButton: UIButton = UIButton()
@@ -65,15 +65,16 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     }
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
-//        var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-        var draggableView: DraggableView = DraggableView(frame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT))
+        var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
+//        var draggableView: DraggableView = DraggableView(frame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT))
         draggableView.information.text = exampleCardLabels.objectAtIndex(index) as String
         draggableView.delegate = self
+        println("draggableView = \(draggableView.information.frame)")
         return draggableView
     
     }
     
-    func loadCards() -> (Void) {
+    func loadCards() {
         if (exampleCardLabels.count > 0) {
             var numLoadedCardsCap = ((exampleCardLabels.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : exampleCardLabels.count )
             
@@ -81,15 +82,18 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
             for (i = 0; i < exampleCardLabels.count; i++) {
                 var newCard: DraggableView = self.createDraggableViewWithDataAtIndex(i)
                 allCards.addObject(newCard)
+                println("\(i) is  \(newCard)")
             }
             
-            for (i = 0; i < loadedCards.count; i++) {
+            var n:Int
+            for (n = 0; n < loadedCards.count; n++) {
                 if (i > 0) {
                     self.insertSubview(loadedCards.objectAtIndex(i) as UIView, belowSubview: loadedCards.objectAtIndex(i-1) as UIView)
                 } else {
                     self.addSubview(loadedCards.objectAtIndex(i) as UIView)
                 }
                 cardsLoadedIndex++
+                println(cardsLoadedIndex)
             }
         }
     }
