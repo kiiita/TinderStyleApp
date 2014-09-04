@@ -57,6 +57,8 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         messageButton.setImage(messageButtonImage, forState: UIControlState.Normal)
         xButton.setImage(xButtonImage, forState: UIControlState.Normal)
         checkButton.setImage(checkButtonImage, forState: UIControlState.Normal)
+        xButton.addTarget(self, action: "swipeLeft", forControlEvents: .TouchUpInside)
+        checkButton.addTarget(self, action: "swipeRight", forControlEvents: .TouchUpInside)
         self.addSubview(menuButton)
         self.addSubview(messageButton)
         self.addSubview(xButton)
