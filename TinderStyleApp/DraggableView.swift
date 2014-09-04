@@ -15,14 +15,14 @@ let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = ca
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 
-protocol DraggableViewDelegate : class {
+protocol DraggableViewDelegate  {
     func cardSwipedLeft(card: UIView)
     func cardSwipedRight(card: UIView)
 }
 
 class DraggableView: UIView {
     
-    weak var delegate: DraggableViewDelegate?
+    var delegate: DraggableViewDelegate?
     var information: UILabel = UILabel()
     var overlayView: OverlayView?
     var panGestureRecognizer: UIPanGestureRecognizer?
@@ -38,7 +38,6 @@ class DraggableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
-        println("------------------------ set up! ----------------------------")
         information = UILabel(frame:CGRectMake(0, 50, self.frame.size.width, 100))
         information.text = "no info given"
         information.textAlignment = NSTextAlignment.Center
@@ -70,6 +69,7 @@ class DraggableView: UIView {
         switch (gestureRecognizer.state) {
         case UIGestureRecognizerState.Began:
             self.originalPoint = self.center;
+            println("originalPoint is \(self.center)")
             break;
         case UIGestureRecognizerState.Changed:
         var rotationStrength: CGFloat = min(xFromCenter / CGFloat(ROTATION_STRENGTH), CGFloat(ROTATION_MAX))
@@ -79,11 +79,12 @@ class DraggableView: UIView {
         var transform: CGAffineTransform = CGAffineTransformMakeRotation(rotationAngel)
         var scaleTransform: CGAffineTransform = CGAffineTransformScale(transform, scale, scale)
             self.transform = scaleTransform
+            println("xFromCenter = \(xFromCenter)")
             self.updateOverlay(xFromCenter)
             break
             
         case UIGestureRecognizerState.Ended:
-            self.afterSwipeAction()
+            self.afterSwipeAction(xFromCenter)
             break
         case UIGestureRecognizerState.Possible:
             break
@@ -95,8 +96,10 @@ class DraggableView: UIView {
     }
     
     func updateOverlay(distance: CGFloat) {
+        println("distance = \(distance)")
         if distance > 0 {
             overlayView!.mode = GGOverlayViewMode.Right
+            println("distance is over 0")
         } else {
             overlayView!.mode = GGOverlayViewMode.Left
         }
@@ -104,10 +107,10 @@ class DraggableView: UIView {
         overlayView!.alpha = min(CGFloat(fabsf(Float(distance))/100), 0.4)
     }
     
-    func afterSwipeAction() {
+    func afterSwipeAction(xFromCenter: CGFloat) {
         if xFromCenter > CGFloat(ACTION_MARGIN) {
             self.rightAction()
-        } else if xFromCenter > CGFloat(-ACTION_MARGIN) {
+        } else if xFromCenter < CGFloat(-ACTION_MARGIN) {
             self.leftAction()
         } else {
             UIView.animateWithDuration(0.3, animations: {
@@ -121,9 +124,10 @@ class DraggableView: UIView {
     
     func rightAction() {
         var finishPoint: CGPoint = CGPointMake(500, 2*yFromCenter + self.originalPoint.y)
+        println(finishPoint)
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
-            }, completion: { (complete: Bool) in
+            }, completion: { (value: Bool) in
                 self.removeFromSuperview()
         })
         delegate?.cardSwipedRight(self)
@@ -132,9 +136,11 @@ class DraggableView: UIView {
     
     func leftAction() {
         var finishPoint: CGPoint = CGPointMake(-500, 2*yFromCenter + self.originalPoint.y)
+        println("leftAction")
+        println(finishPoint)
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
-            }, completion: { (complete: Bool) in
+            }, completion: { (value: Bool) in
                 self.removeFromSuperview()
         })
         delegate?.cardSwipedLeft(self)
@@ -146,19 +152,18 @@ class DraggableView: UIView {
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
             self.transform = CGAffineTransformMakeRotation(1)
-            }, completion: { (complete: Bool) in
+            }, completion: { (value: Bool) in
                 self.removeFromSuperview()
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
-        println("HUGA")
     }
     func leftClickAction() {
         var finishPoint: CGPoint = CGPointMake(-600, self.center.y)
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
             self.transform = CGAffineTransformMakeRotation(-1)
-            }, completion: { (complete: Bool) in
+            }, completion: { (value: Bool) in
                 self.removeFromSuperview()
         })
         delegate?.cardSwipedRight(self)
