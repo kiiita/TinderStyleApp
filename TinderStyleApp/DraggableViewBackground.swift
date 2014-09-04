@@ -68,7 +68,6 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
         var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-//        var draggableView: DraggableView = DraggableView(frame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT))
         draggableView.information.text = exampleCardLabels.objectAtIndex(index) as String
         draggableView.backgroundColor = UIColor.whiteColor()
         draggableView.delegate = self

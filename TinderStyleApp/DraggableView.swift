@@ -95,9 +95,9 @@ class DraggableView: UIView {
     
     func updateOverlay(distance: CGFloat) {
         if distance > 0 {
-            overlayView!.mode = GGOverlayViewMode.Right
+            overlayView!.setMode(GGOverlayViewMode.Right)
         } else {
-            overlayView!.mode = GGOverlayViewMode.Left
+            overlayView!.setMode(GGOverlayViewMode.Left)
         }
         
         overlayView!.alpha = min(CGFloat(fabsf(Float(distance))/100), 0.4)

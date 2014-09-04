@@ -27,10 +27,13 @@ class OverlayView: UIView{
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         imageView = UIImageView(image:UIImage(named: "noButton"))
+        self.addSubview(imageView)
     }
     
     func setMode(mode: GGOverlayViewMode) {
+        println("load setMode")
         
+        println(mode)
         if mode == GGOverlayViewMode.Left {
             imageView.image = UIImage(named: "noButton")
         } else {
