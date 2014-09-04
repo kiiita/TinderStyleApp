@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         
         var draggableBackground = DraggableViewBackground(frame: self.view.frame)
         self.view.addSubview(draggableBackground)
+        println(draggableBackground.loadedCards.count)
     }
 
     override func didReceiveMemoryWarning() {

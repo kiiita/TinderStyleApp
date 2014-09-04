@@ -69,7 +69,6 @@ class DraggableView: UIView {
         switch (gestureRecognizer.state) {
         case UIGestureRecognizerState.Began:
             self.originalPoint = self.center;
-            println("originalPoint is \(self.center)")
             break;
         case UIGestureRecognizerState.Changed:
         var rotationStrength: CGFloat = min(xFromCenter / CGFloat(ROTATION_STRENGTH), CGFloat(ROTATION_MAX))
@@ -79,7 +78,6 @@ class DraggableView: UIView {
         var transform: CGAffineTransform = CGAffineTransformMakeRotation(rotationAngel)
         var scaleTransform: CGAffineTransform = CGAffineTransformScale(transform, scale, scale)
             self.transform = scaleTransform
-            println("xFromCenter = \(xFromCenter)")
             self.updateOverlay(xFromCenter)
             break
             
@@ -96,10 +94,8 @@ class DraggableView: UIView {
     }
     
     func updateOverlay(distance: CGFloat) {
-        println("distance = \(distance)")
         if distance > 0 {
             overlayView!.mode = GGOverlayViewMode.Right
-            println("distance is over 0")
         } else {
             overlayView!.mode = GGOverlayViewMode.Left
         }
@@ -124,7 +120,6 @@ class DraggableView: UIView {
     
     func rightAction() {
         var finishPoint: CGPoint = CGPointMake(500, 2*yFromCenter + self.originalPoint.y)
-        println(finishPoint)
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
             }, completion: { (value: Bool) in
@@ -136,8 +131,6 @@ class DraggableView: UIView {
     
     func leftAction() {
         var finishPoint: CGPoint = CGPointMake(-500, 2*yFromCenter + self.originalPoint.y)
-        println("leftAction")
-        println(finishPoint)
         UIView.animateWithDuration(0.3, animations: {
             self.center = finishPoint
             }, completion: { (value: Bool) in
