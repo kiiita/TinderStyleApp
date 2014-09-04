@@ -78,17 +78,16 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         if (exampleCardLabels.count > 0) {
             var numLoadedCardsCap = ((exampleCardLabels.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : exampleCardLabels.count )
             
-            var i:Int
-            for (i = 0; i < exampleCardLabels.count; i++) {
+            for i in 0..<exampleCardLabels.count {
                 var newCard: DraggableView = self.createDraggableViewWithDataAtIndex(i)
                 allCards.addObject(newCard)
                 
-                if (i > numLoadedCardsCap) {
+                if (i < numLoadedCardsCap) {
                     loadedCards.addObject(newCard)
                 }
             }
             
-            for (i = 0; i < loadedCards.count; i++) {
+            for i in 0..<loadedCards.count {
                 if (i > 0) {
                     self.insertSubview(loadedCards.objectAtIndex(i) as UIView, belowSubview: loadedCards.objectAtIndex(i-1) as UIView)
                 } else {
