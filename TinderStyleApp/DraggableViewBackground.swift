@@ -40,7 +40,6 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         loadedCards = []
         cardsLoadedIndex = 0
         self.loadCards()
-    
     }
     
     func setupView() {
@@ -63,7 +62,6 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         self.addSubview(messageButton)
         self.addSubview(xButton)
         self.addSubview(checkButton)
-
     }
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
@@ -72,7 +70,6 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         draggableView.backgroundColor = UIColor.whiteColor()
         draggableView.delegate = self
         return draggableView
-    
     }
     
     func loadCards() {
@@ -82,7 +79,6 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
             for i in 0..<exampleCardLabels.count {
                 var newCard: DraggableView = self.createDraggableViewWithDataAtIndex(i)
                 allCards.addObject(newCard)
-                
                 if (i < numLoadedCardsCap) {
                     loadedCards.addObject(newCard)
                 }

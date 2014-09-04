@@ -22,7 +22,6 @@ class OverlayView: UIView{
         super.init(coder: aDecoder)
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
@@ -39,12 +38,10 @@ class OverlayView: UIView{
         } else {
             imageView.image = UIImage(named: "yesButton")
         }
-        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = CGRectMake(50, 50, 100, 100)
-        
     }
 }
