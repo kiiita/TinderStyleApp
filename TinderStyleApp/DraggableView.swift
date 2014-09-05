@@ -14,6 +14,7 @@ let SCALE_MAX = 0.93 //%%% upper bar for how much the card shrinks. Higher = shr
 let ROTATION_MAX = 1 //%%% the maximum rotation allowed in radians.  Higher = card can keep rotating longer
 let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
+var answerList = [Int]()
 
 protocol DraggableViewDelegate  {
     func cardSwipedLeft(card: UIView)
@@ -21,6 +22,7 @@ protocol DraggableViewDelegate  {
 }
 
 class DraggableView: UIView {
+    
     
     var delegate: DraggableViewDelegate?
     var information: UILabel = UILabel()
@@ -31,7 +33,7 @@ class DraggableView: UIView {
     var xFromCenter: CGFloat = CGFloat()
     var yFromCenter: CGFloat = CGFloat()
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -127,6 +129,7 @@ class DraggableView: UIView {
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
+        answerList.append(1)
     }
     
     func leftAction() {
@@ -150,6 +153,7 @@ class DraggableView: UIView {
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
+        answerList.append(1)
     }
     func leftClickAction() {
         var finishPoint: CGPoint = CGPointMake(-600, self.center.y)
@@ -162,5 +166,5 @@ class DraggableView: UIView {
         delegate?.cardSwipedRight(self)
         NSLog("NO")
     }
-    
 }
+    

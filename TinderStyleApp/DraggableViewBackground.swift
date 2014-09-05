@@ -9,7 +9,28 @@
 import Foundation
 import UIKit
 
+//var questionList: [String: String] = ["groupA":"1","groupA":"2","groupA":"3","groupB":"4","groupB":"5","groupB":"6","groupB":"7","groupC":"8","groupC":"9","groupD":"10"]
+
+//struct A {
+//    var hoge : [String]
+//    var yesAnswer: String
+//    var noAnswer: String
+//    
+//    init() {
+//    var hoge : [String] = ["a1", "a2"]
+//    var yesAnswer: String = "OK"
+//    var noAnswer: String = "NG"
+//    }
+//    
+//}
+
+
+
 class DraggableViewBackground: UIView, DraggableViewDelegate{
+    
+//    var aaa = A()
+//    println(aaa)
+    
     
     var cardsLoadedIndex:Int = Int()
     var loadedCards: NSMutableArray = NSMutableArray()
@@ -25,9 +46,10 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     var exampleCardLabels: NSArray = NSArray()
     var allCards: NSMutableArray = NSMutableArray()
+    var result: UILabel = UILabel()
     
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -36,18 +58,22 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         super.layoutSubviews()
         self.setupView()
         
-        exampleCardLabels = ["hoge1", "hoge2", "hoge3", "hoge4", "hoge5"]
+        exampleCardLabels = ["夢に彼氏が出てきた？", "彼氏とおはようの挨拶はした？", "浮気が心配。。。", "もうすぐ彼との記念日？", "昨日寝る前におやすみは言った？"]
         loadedCards = []
         cardsLoadedIndex = 0
         self.loadCards()
     }
     
     func setupView() {
-        self.backgroundColor = UIColor(red: 0.92, green: 0.93, blue: 0.95, alpha: 1.0);
+        self.backgroundColor = UIColor(red: 0.529, green: 0.809, blue: 0.98, alpha: 1.0);
         menuButton = UIButton(frame:CGRectMake(17,34,22,15))
         messageButton = UIButton(frame:CGRectMake(284,34,18,18))
         xButton = UIButton(frame:CGRectMake(60,485,59,59))
         checkButton = UIButton(frame:CGRectMake(200,485,59,59));
+//        result = UILabel(frame:CGRectMake(self.bounds.size.width - 100 / 2, self.bounds.size.height - 100 / 2, self.frame.size.width, 100))
+        result = UILabel(frame:CGRectMake(60, 200, 200, 100))
+        result.numberOfLines = 0
+        result.text = "result!"
         let menuButtonImage = UIImage(named: "menuButton")
         let messageButtonImage = UIImage(named: "messageButton")
         let xButtonImage = UIImage(named: "xButton")
@@ -62,11 +88,12 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         self.addSubview(messageButton)
         self.addSubview(xButton)
         self.addSubview(checkButton)
+        self.addSubview(result)
     }
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
         var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-        draggableView.information.text = exampleCardLabels.objectAtIndex(index) as String
+        draggableView.information.text = exampleCardLabels.objectAtIndex(index) as? String
         draggableView.backgroundColor = UIColor.whiteColor()
         draggableView.delegate = self
         return draggableView
@@ -102,6 +129,9 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
             cardsLoadedIndex++
             self.insertSubview(loadedCards.objectAtIndex(MAX_BUFFER_SIZE-1) as UIView, belowSubview: loadedCards.objectAtIndex(MAX_BUFFER_SIZE-2) as UIView)
         }
+        if (cardsLoadedIndex == 5) {
+            self.result.text = "あんまり調子に乗らず\n大人しくしとこう"
+        }
     }
     
     func cardSwipedRight(card: UIView) {
@@ -110,6 +140,9 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
             loadedCards.addObject(allCards.objectAtIndex(cardsLoadedIndex))
             cardsLoadedIndex++
             self.insertSubview(loadedCards.objectAtIndex(MAX_BUFFER_SIZE-1) as UIView, belowSubview: loadedCards.objectAtIndex(MAX_BUFFER_SIZE-2) as UIView)
+        }
+        if (cardsLoadedIndex == 5) {
+            self.result.text = "きっと今日は彼氏と\nいいコトがあるはず...♡"
         }
     }
     
@@ -131,4 +164,3 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         dragView.leftClickAction()
     }
 }
-

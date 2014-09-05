@@ -18,7 +18,7 @@ class OverlayView: UIView{
     var mode: GGOverlayViewMode?
     var imageView: UIImageView = UIImageView()
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -30,9 +30,6 @@ class OverlayView: UIView{
     }
     
     func setMode(mode: GGOverlayViewMode) {
-        println("load setMode")
-        
-        println(mode)
         if mode == GGOverlayViewMode.Left {
             imageView.image = UIImage(named: "noButton")
         } else {
