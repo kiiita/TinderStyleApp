@@ -11,25 +11,25 @@ import UIKit
 
 //var questionList: [String: String] = ["groupA":"1","groupA":"2","groupA":"3","groupB":"4","groupB":"5","groupB":"6","groupB":"7","groupC":"8","groupC":"9","groupD":"10"]
 
-//struct A {
-//    var hoge : [String]
-//    var yesAnswer: String
-//    var noAnswer: String
-//    
-//    init() {
-//    var hoge : [String] = ["a1", "a2"]
-//    var yesAnswer: String = "OK"
-//    var noAnswer: String = "NG"
-//    }
-//    
-//}
+struct A {
+    var hoge : [String]
+    var yesAnswer: String
+    var noAnswer: String
+    
+    init() {
+        self.hoge = ["a1", "a2"]
+        self.yesAnswer = "OK"
+        self.noAnswer = "NG"
+    }
+    
+}
 
 
 
 class DraggableViewBackground: UIView, DraggableViewDelegate{
     
-//    var aaa = A()
-//    println(aaa)
+    var aaa = A().hoge
+    println(aaa)
     
     
     var cardsLoadedIndex:Int = Int()
