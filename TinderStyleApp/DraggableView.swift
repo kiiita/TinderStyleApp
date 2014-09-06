@@ -16,7 +16,7 @@ let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 var answerList = [Int]()
 
-protocol DraggableViewDelegate  {
+@objc protocol DraggableViewDelegate  {
     func cardSwipedLeft(card: UIView)
     func cardSwipedRight(card: UIView)
 }
@@ -33,9 +33,6 @@ class DraggableView: UIView {
     var xFromCenter: CGFloat = CGFloat()
     var yFromCenter: CGFloat = CGFloat()
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +53,11 @@ class DraggableView: UIView {
         self.addSubview(overlayView!)
         
     }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     func setupView() {
         self.layer.cornerRadius = 4
@@ -129,7 +131,6 @@ class DraggableView: UIView {
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
-        answerList.append(1)
     }
     
     func leftAction() {
@@ -153,7 +154,6 @@ class DraggableView: UIView {
         })
         delegate?.cardSwipedRight(self)
         NSLog("YES")
-        answerList.append(1)
     }
     func leftClickAction() {
         var finishPoint: CGPoint = CGPointMake(-600, self.center.y)
@@ -163,7 +163,7 @@ class DraggableView: UIView {
             }, completion: { (value: Bool) in
                 self.removeFromSuperview()
         })
-        delegate?.cardSwipedRight(self)
+        delegate?.cardSwipedLeft(self)
         NSLog("NO")
     }
 }
