@@ -1,2 +1,4 @@
-## TinderStyleApp
-- SwiftとObjective-CでTinderのようなSwipe Viewを実装
+# UranaiApp(仮)
+第9期ユニットミッションアプリチームのにじげん部隊。
+Tinderライクの占いiOSアプリケーション。
+言語はSwift。
