@@ -15,6 +15,8 @@
 		1D7E5A1719B1F19A00D283C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1619B1F19A00D283C5 /* Foundation.framework */; };
 		1D7E5A1919B1F1A400D283C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */; };
 		1D7E5A1B19B1F1AB00D283C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */; };
+		1DCB9C7019BAC16B00749CF1 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCB9C6F19BAC16B00749CF1 /* Questions.swift */; };
+		1DCB9C7219BAC71500749CF1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCB9C7119BAC71500749CF1 /* Extension.swift */; };
 		1EBB855B19B49D9B00EF5588 /* DraggableViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB855A19B49D9B00EF5588 /* DraggableViewBackground.swift */; };
 		1EBB855D19B4A34B00EF5588 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB855C19B4A34B00EF5588 /* DraggableView.swift */; };
 		1EBB855F19B4BD1800EF5588 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB855E19B4BD1800EF5588 /* OverlayView.swift */; };
@@ -44,6 +46,8 @@
 		1D7E5A1819B1F1A400D283C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1D7E5A1A19B1F1AB00D283C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1D7E5A1D19B1F37F00D283C5 /* TinderStyleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinderStyleApp-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		1DCB9C6F19BAC16B00749CF1 /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		1DCB9C7119BAC71500749CF1 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1EBB855A19B49D9B00EF5588 /* DraggableViewBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableViewBackground.swift; sourceTree = "<group>"; };
 		1EBB855C19B4A34B00EF5588 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		1EBB855E19B4BD1800EF5588 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
@@ -95,8 +99,10 @@
 				1EBB855C19B4A34B00EF5588 /* DraggableView.swift */,
 				1EBB855A19B49D9B00EF5588 /* DraggableViewBackground.swift */,
 				1EBB855E19B4BD1800EF5588 /* OverlayView.swift */,
+				1DCB9C7119BAC71500749CF1 /* Extension.swift */,
 				1D7E59F919B1F18600D283C5 /* AppDelegate.swift */,
 				1D7E59FB19B1F18600D283C5 /* ViewController.swift */,
+				1DCB9C6F19BAC16B00749CF1 /* Questions.swift */,
 				1D7E5A1D19B1F37F00D283C5 /* TinderStyleApp-Bridging-Header.h */,
 				1D7E59FD19B1F18600D283C5 /* Main.storyboard */,
 				1D7E5A0019B1F18600D283C5 /* Images.xcassets */,
@@ -241,7 +247,9 @@
 			files = (
 				1EBB855D19B4A34B00EF5588 /* DraggableView.swift in Sources */,
 				1EBB855F19B4BD1800EF5588 /* OverlayView.swift in Sources */,
+				1DCB9C7219BAC71500749CF1 /* Extension.swift in Sources */,
 				1EBB855B19B49D9B00EF5588 /* DraggableViewBackground.swift in Sources */,
+				1DCB9C7019BAC16B00749CF1 /* Questions.swift in Sources */,
 				1D7E59FC19B1F18600D283C5 /* ViewController.swift in Sources */,
 				1D7E59FA19B1F18600D283C5 /* AppDelegate.swift in Sources */,
 			);

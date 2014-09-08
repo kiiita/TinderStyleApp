@@ -9,28 +9,9 @@
 import Foundation
 import UIKit
 
-//var questionList: [String: String] = ["groupA":"1","groupA":"2","groupA":"3","groupB":"4","groupB":"5","groupB":"6","groupB":"7","groupC":"8","groupC":"9","groupD":"10"]
-
-struct A {
-    var hoge : [String]
-    var yesAnswer: String
-    var noAnswer: String
-    
-    init() {
-        self.hoge = ["a1", "a2"]
-        self.yesAnswer = "OK"
-        self.noAnswer = "NG"
-    }
-    
-}
-
 
 
 class DraggableViewBackground: UIView, DraggableViewDelegate{
-    
-    var aaa = A().hoge
-    println(aaa)
-    
     
     var cardsLoadedIndex:Int = Int()
     var loadedCards: NSMutableArray = NSMutableArray()
@@ -44,13 +25,24 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     let CARD_HEIGHT: CGFloat = 260
     let CARD_WIDTH: CGFloat = 260
     
-    var exampleCardLabels: NSArray = NSArray()
+    var exampleCardLabels: NSMutableArray = NSMutableArray()
+    var selectedCardLabels: NSMutableArray = NSMutableArray()
     var allCards: NSMutableArray = NSMutableArray()
     var result: UILabel = UILabel()
+    var groupA = questionGroupA()
+    var groupB = questionGroupB()
+    var groupC = questionGroupC()
+    var groupD = questionGroupD()
+    var groupE = questionGroupE()
     
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    
+    override init() {
+        super.init()
     }
     
     override init(frame: CGRect) {
@@ -58,7 +50,22 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         super.layoutSubviews()
         self.setupView()
         
-        exampleCardLabels = ["夢に彼氏が出てきた？", "彼氏とおはようの挨拶はした？", "浮気が心配。。。", "もうすぐ彼との記念日？", "昨日寝る前におやすみは言った？"]
+        // Get first five questions from randomed questions list TODO:refactor
+        exampleCardLabels = []
+        exampleCardLabels.addObjectsFromArray(groupA.questionsList)
+        exampleCardLabels.addObjectsFromArray(groupB.questionsList)
+        exampleCardLabels.addObjectsFromArray(groupC.questionsList)
+        exampleCardLabels.addObjectsFromArray(groupD.questionsList)
+        
+        exampleCardLabels.shuffle()
+        selectedCardLabels = []
+        for i in 0..<5 {
+            selectedCardLabels.addObject(exampleCardLabels[i])
+        }
+        var hoge = selectedCardLabels.lastObject
+        groupA.questionsList
+        class_getName(hoge)
+        
         loadedCards = []
         cardsLoadedIndex = 0
         self.loadCards()
@@ -93,17 +100,19 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
         var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-        draggableView.information.text = exampleCardLabels.objectAtIndex(index) as? String
+        draggableView.information.text = "\(selectedCardLabels[index])"
         draggableView.backgroundColor = UIColor.whiteColor()
         draggableView.delegate = self
         return draggableView
     }
     
     func loadCards() {
-        if (exampleCardLabels.count > 0) {
-            var numLoadedCardsCap = ((exampleCardLabels.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : exampleCardLabels.count )
+        if (selectedCardLabels.count > 0) {
+//            var numLoadedCardsCap = ((selectedCardLabels.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : selectedCardLabels.count )
+            var numLoadedCardsCap = selectedCardLabels.count
             
-            for i in 0..<exampleCardLabels.count {
+            
+            for i in 0..<selectedCardLabels.count {
                 var newCard: DraggableView = self.createDraggableViewWithDataAtIndex(i)
                 allCards.addObject(newCard)
                 if (i < numLoadedCardsCap) {

@@ -16,7 +16,7 @@ let ROTATION_STRENGTH = 320 //%%% strength of rotation. Higher = weaker rotation
 let ROTATION_ANGLE  = M_PI/8 //%%% Higher = stronger rotation angle
 var answerList = [Int]()
 
-@objc protocol DraggableViewDelegate  {
+protocol DraggableViewDelegate  {
     func cardSwipedLeft(card: UIView)
     func cardSwipedRight(card: UIView)
 }
