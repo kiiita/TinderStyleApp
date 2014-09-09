@@ -57,14 +57,17 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
         exampleCardLabels.addObjectsFromArray(groupC.questionsList)
         exampleCardLabels.addObjectsFromArray(groupD.questionsList)
         
-        exampleCardLabels.shuffle()
-        selectedCardLabels = []
-        for i in 0..<5 {
-            selectedCardLabels.addObject(exampleCardLabels[i])
-        }
-        var hoge = selectedCardLabels.lastObject
-        groupA.questionsList
-        class_getName(hoge)
+        
+        println(exampleCardLabels)
+        exampleCardLabels.shuffle(exampleCardLabels.count)
+        println(exampleCardLabels)
+//        selectedCardLabels = []
+//        for i in 0..<5 {
+//            selectedCardLabels.addObject(exampleCardLabels[i])
+//        }
+//        var hoge = selectedCardLabels.lastObject
+//        groupA.questionsList
+//        class_getName(hoge)
         
         loadedCards = []
         cardsLoadedIndex = 0
@@ -100,19 +103,19 @@ class DraggableViewBackground: UIView, DraggableViewDelegate{
     
     func createDraggableViewWithDataAtIndex(index: Int) -> DraggableView {
         var draggableView: DraggableView = DraggableView(frame:CGRectMake(30, 100, CARD_WIDTH, CARD_HEIGHT))
-        draggableView.information.text = "\(selectedCardLabels[index])"
+        draggableView.information.text = "\(exampleCardLabels[index])"
         draggableView.backgroundColor = UIColor.whiteColor()
         draggableView.delegate = self
         return draggableView
     }
     
     func loadCards() {
-        if (selectedCardLabels.count > 0) {
+        if (exampleCardLabels.count > 0) {
 //            var numLoadedCardsCap = ((selectedCardLabels.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : selectedCardLabels.count )
-            var numLoadedCardsCap = selectedCardLabels.count
+            var numLoadedCardsCap = exampleCardLabels.count
             
             
-            for i in 0..<selectedCardLabels.count {
+            for i in 0..<exampleCardLabels.count {
                 var newCard: DraggableView = self.createDraggableViewWithDataAtIndex(i)
                 allCards.addObject(newCard)
                 if (i < numLoadedCardsCap) {
